@@ -1,0 +1,53 @@
+<?php
+
+namespace backend\models;
+
+use Yii;
+
+/**
+ * This is the model class for table "subject".
+ *
+ * @property int $id
+ * @property string $name Название предмета
+ */
+class Subject extends \yii\db\ActiveRecord
+{
+    /**
+     * @inheritdoc
+     */
+    public static function tableName()
+    {
+        return 'subject';
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules()
+    {
+        return [
+            [['name'], 'required'],
+            [['name'], 'string', 'max' => 255],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function attributeLabels()
+    {
+        return [
+            'id' => 'ID',
+            'name' => 'Название предмета',
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     * @return SubjectQuery the active query used by this AR class.
+     */
+    public static function find()
+    {
+        return new SubjectQuery(get_called_class());
+    }
+}

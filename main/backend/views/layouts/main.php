@@ -36,15 +36,22 @@ AppAsset::register($this);
         ],
     ]);
     $menuItems = [
-        ['label' => 'Home', 'url' => ['/site/index']],
+//        ['label' => 'Главная', 'url' => ['/site/index']],
     ];
     if (Yii::$app->user->isGuest) {
-        $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
+        $menuItems[] = ['label' => 'Вход', 'url' => ['/site/login']];
     } else {
+	    $menuItems[] = ['label' => 'Успеваемость', 'url' => ['/mark']];
+	    $menuItems[] = ['label' => 'Справочник', 'items' => [
+		    ['label' => 'Ученики', 'url' => ['/pupil']],
+	        ['label' => 'Предметы', 'url' => ['/subject']],
+	        ['label' => 'Темы', 'url' => ['/topic']],
+	        ['label' => 'Шаблоны оценок', 'url' => ['/mark-template-ref']],
+        ]];
         $menuItems[] = '<li>'
             . Html::beginForm(['/site/logout'], 'post')
             . Html::submitButton(
-                'Logout (' . Yii::$app->user->identity->username . ')',
+                'Выход (' . Yii::$app->user->identity->username . ')',
                 ['class' => 'btn btn-link logout']
             )
             . Html::endForm()

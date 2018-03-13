@@ -9,6 +9,8 @@ $params = array_merge(
 return [
     'id' => 'app-backend',
     'basePath' => dirname(__DIR__),
+	'name' => 'Маркер успеваемости',
+	'language' => 'ru-RU',
     'controllerNamespace' => 'backend\controllers',
     'bootstrap' => ['log'],
     'modules' => [],
@@ -37,14 +39,20 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
-        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
+//	        'enableStrictParsing' => false,
             'rules' => [
             ],
         ],
-        */
+	    'formatter' => [
+		    'locale' => 'ru-RU',
+		    'class' => 'yii\i18n\Formatter',
+		    'dateFormat' => 'php:d.m.Y',
+		    'datetimeFormat' => 'php:d.m.Y H:i:s',
+		    'timeFormat' => 'php:H:i:s',
+	    ],
     ],
     'params' => $params,
 ];
