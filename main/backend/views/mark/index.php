@@ -39,4 +39,6 @@ $this->params['breadcrumbs'][] = $this->title;
         ],
     ]); ?>
     <?php Pjax::end(); ?>
+    <img src="/Screenshot_2.png">
+    
 </div>
